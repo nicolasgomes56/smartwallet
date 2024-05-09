@@ -1,3 +1,13 @@
+import { ThemeProvider } from './components/theme/theme-provider'
+import { Toaster } from './components/ui/sonner'
+
 export function App() {
-  return <h1>Hello World</h1>
+  return (
+    <HelmetProvider>
+      <ThemeProvider storageKey="smartwallet-theme" defaultTheme="dark">
+        <Toaster richColors />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </HelmetProvider>
+  )
 }
