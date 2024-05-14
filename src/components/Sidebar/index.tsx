@@ -1,5 +1,12 @@
-import { CandlestickChart, Home, List, PiggyBank } from 'lucide-react'
+import {
+  BadgeDollarSign,
+  CandlestickChart,
+  Home,
+  List,
+  PiggyBank,
+} from 'lucide-react'
 
+import { Button } from '../ui/button'
 import { NavLink } from './nav-link'
 import { Profile } from './Profile'
 
@@ -26,6 +33,18 @@ export function Sidebar() {
       </nav>
 
       <div className="mt-auto flex flex-col gap-6">
+        <nav className="space-y-0.5">
+          <Button
+            variant="outline"
+            className="flex h-12 w-full gap-2 rounded-lg border-violet-700"
+          >
+            <BadgeDollarSign className="h-6 w-6" />
+            <span className="font-semibold">Nova transação</span>
+          </Button>
+        </nav>
+
+        <div className="h-px bg-muted-foreground" />
+
         <Profile />
       </div>
     </aside>

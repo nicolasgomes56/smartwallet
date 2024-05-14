@@ -3,14 +3,15 @@ import { Helmet } from 'react-helmet-async'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-import { SpendingCategory } from './spending-category'
+import { PopularCategories } from './popular-categories'
+import { TransactionsChart } from './transactions-chart'
 
 export function Home() {
   return (
     <>
       <Helmet title="Dashboard" />
-      <div className="flex flex-1 flex-col gap-4 space-y-4 md:overflow-auto">
-        <h1 className="text-xl font-bold tracking-tight">Dashboard</h1>
+      <div className="flex flex-1 flex-col gap-4 space-y-4">
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
 
         <div>
           <p className="text-muted-foreground">Saldo em contas</p>
@@ -19,20 +20,9 @@ export function Home() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {/* <SpendingCategory /> */}
-        </div>
-
-        {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <MonthRevenueCard />
-          <MonthOrdersAmountCard />
-          <DayOrdersAmountCard />
-          <MonthCanceledOrdersAmountCard />
-        </div>
-        */}
-
-        <div className="grid gap-4 md:grid-cols-9">
-          <SpendingCategory />
+        <div className="grid grid-cols-3 gap-4 lg:grid-cols-12">
+          <TransactionsChart />
+          <PopularCategories />
         </div>
 
         <div className="items-start gap-4 space-y-4 md:flex md:space-y-0">
