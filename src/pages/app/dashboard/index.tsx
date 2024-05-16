@@ -10,7 +10,7 @@ export function Home() {
   return (
     <>
       <Helmet title="Dashboard" />
-      <div className="flex flex-1 flex-col gap-4 space-y-4">
+      <div className="flex flex-col gap-4 space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
 
         <div>
@@ -20,7 +20,7 @@ export function Home() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 lg:grid-cols-12">
+        <div className="grid gap-4 md:grid-cols-9">
           <TransactionsChart />
           <PopularCategories />
         </div>

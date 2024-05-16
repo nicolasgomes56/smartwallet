@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        app: 'minmax(14rem, 18rem) 1fr',
+        app: 'minmax(16rem, 16rem) 1fr',
         profile: 'max-content 1fr min-content',
       },
       colors: {

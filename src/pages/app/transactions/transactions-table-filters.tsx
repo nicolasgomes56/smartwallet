@@ -1,4 +1,15 @@
-import { Search, Utensils, X } from 'lucide-react'
+import {
+  Car,
+  DollarSign,
+  GraduationCap,
+  Plane,
+  Popcorn,
+  Search,
+  ShoppingBasket,
+  Stethoscope,
+  Utensils,
+  X,
+} from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -26,7 +37,7 @@ export function TransactionsTableFilters() {
       <span className="text-sm font-semibold">Filtros:</span>
 
       <Input
-        placeholder="ID do pedido"
+        placeholder="ID da transação"
         className="h-8 w-auto"
         // {...register('orderId')}
       />
@@ -49,22 +60,59 @@ export function TransactionsTableFilters() {
               value={value}
               disabled={disabled}
             >
-              <SelectTrigger className="h-8 w-[180px]">
+              <SelectTrigger className="h-8 w-[200px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">
-                  <Utensils className="w-5 text-amber-500" />
-                  Todas as categorias
+                <SelectItem value="all">Todas categorias</SelectItem>
+                <SelectItem value="food">
+                  <div className="flex items-center">
+                    <Utensils className="mr-2 h-4 w-4" />
+                    Alimentação
+                  </div>
                 </SelectItem>
-                <SelectItem value="food">Alimentação</SelectItem>
-                <SelectItem value="shopping">Compras</SelectItem>
-                <SelectItem value="studies">Estudos</SelectItem>
-                <SelectItem value="leisure">Lazer</SelectItem>
-                <SelectItem value="others">Outros</SelectItem>
-                <SelectItem value="health">Saúde</SelectItem>
-                <SelectItem value="transport">Transporte</SelectItem>
-                <SelectItem value="travel">Viagem</SelectItem>
+                <SelectItem value="shopping">
+                  <div className="flex items-center">
+                    <ShoppingBasket className="mr-2 h-4 w-4" />
+                    Compras
+                  </div>
+                </SelectItem>
+                <SelectItem value="studies">
+                  <div className="flex items-center">
+                    <GraduationCap className="mr-2 h-4 w-4" />
+                    Estudos
+                  </div>
+                </SelectItem>
+                <SelectItem value="leisure">
+                  <div className="flex items-center">
+                    <Popcorn className="mr-2 h-4 w-4" />
+                    Lazer
+                  </div>
+                </SelectItem>
+                <SelectItem value="others">
+                  <div className="flex items-center">
+                    <DollarSign className="mr-2 h-4 w-4" />
+                    Outros
+                  </div>
+                </SelectItem>
+                <SelectItem value="health">
+                  <div className="flex items-center">
+                    <Stethoscope className="mr-2 h-4 w-4" />
+                    Saúde
+                  </div>
+                </SelectItem>
+                <SelectItem value="transport">
+                  <div className="flex items-center">
+                    <Car className="mr-2 h-4 w-4" />
+                    Transporte
+                  </div>
+                </SelectItem>
+                <SelectItem value="travel">
+                  <div className="flex items-center">
+                    <Plane className="mr-2 h-4 w-4" />
+                    Viagem
+                  </div>
+                </SelectItem>
               </SelectContent>
             </Select>
           )

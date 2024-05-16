@@ -1,4 +1,3 @@
-import { Utensils } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
 import { Pagination } from '@/components/pagination'
@@ -6,6 +5,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableHead,
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
@@ -15,7 +15,7 @@ import { TransactionsTableFilters } from './transactions-table-filters'
 export function Transactions() {
   return (
     <>
-      <Helmet title="Transactions" />
+      <Helmet title="Transações" />
       <div className="flex flex-col gap-4">
         <h1 className="text-3xl font-bold tracking-tight">Transações</h1>
 
@@ -26,27 +26,34 @@ export function Transactions() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableCell>Identificador</TableCell>
-                  <TableCell>Nome</TableCell>
-                  <TableCell>Data da transação</TableCell>
-                  <TableCell>Categoria</TableCell>
-                  <TableCell>Valor</TableCell>
-                  <TableCell>Tipo</TableCell>
+                  <TableHead>Identificador</TableHead>
+                  <TableHead>Nome</TableHead>
+                  <TableHead>Data da transação</TableHead>
+                  <TableHead>Categoria</TableHead>
+                  <TableHead>Valor</TableHead>
+                  <TableHead>Tipo</TableHead>
                 </TableRow>
               </TableHeader>
 
               <TableBody>
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>Teste</TableCell>
-                    <TableCell>14/05/2024</TableCell>
-                    <TableCell className="flex gap-2 text-center font-semibold">
-                      <Utensils className="w-5 text-amber-500" />
-                      Alimentação
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <TableRow key={i}>
+                    <TableCell className="font-mono text-xs font-medium">{`transaction-${i + 1}`}</TableCell>
+                    <TableCell className="font-medium">{`Transação ${i + 1}`}</TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {new Date().toLocaleDateString()}
                     </TableCell>
-                    <TableCell>R$ 20,00</TableCell>
-                    <TableCell>Despesa</TableCell>
+                    <TableCell>Alimentação</TableCell>
+                    <TableCell className="text-muted-foreground">
+                      R$ 100,00
+                    </TableCell>
+                    <TableCell className="text-sm font-semibold">
+                      {i % 2 === 0 ? (
+                        <span className="text-green-500">Receita</span>
+                      ) : (
+                        <span className="text-rose-400">Despesa</span>
+                      )}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

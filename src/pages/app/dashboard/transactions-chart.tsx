@@ -1,83 +1,98 @@
-import { ApexOptions } from 'apexcharts'
-import { LineChart } from 'lucide-react'
-import Chart from 'react-apexcharts'
+import { LineChart as LineChartIcon, Loader2 } from 'lucide-react'
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
+import { violet } from 'tailwindcss/colors'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+const chartData = [
+  {
+    date: '2021-01-01',
+    receipt: 400,
+  },
+  {
+    date: '2021-02-01',
+    receipt: 300,
+  },
+  {
+    date: '2021-03-01',
+    receipt: 300,
+  },
+  {
+    date: '2021-04-01',
+    receipt: 200,
+  },
+  {
+    date: '2021-05-01',
+    receipt: 100,
+  },
+]
 
 export function TransactionsChart() {
   return (
     <>
-      <Card className="col-span-5 lg:col-span-7">
+      <Card className="col-span-6">
         <CardHeader className="pb-8">
           <div className="flex items-center justify-between">
             <CardTitle className="text-base font-medium ">Transações</CardTitle>
-            <LineChart className="h-4 w-4 text-muted-foreground" />
+            <LineChartIcon className="h-4 w-4 text-muted-foreground" />
           </div>
         </CardHeader>
         <CardContent>
-          <Chart
-            options={options}
-            series={monthlyData.series}
-            type="line"
-            height={300}
-          />
+          {chartData ? (
+            <ResponsiveContainer width="100%" height={240}>
+              <LineChart data={chartData} style={{ fontsize: 12 }}>
+                <XAxis
+                  dataKey={'date'}
+                  tickLine={false}
+                  axisLine={false}
+                  dy={16}
+                />
+                <YAxis
+                  stroke="#888"
+                  axisLine={false}
+                  tickLine={false}
+                  width={100}
+                  tickFormatter={(value: number) =>
+                    value.toLocaleString('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    })
+                  }
+                />
+
+                <CartesianGrid vertical={false} className="stroke-muted" />
+
+                <Line
+                  type="linear"
+                  strokeWidth={2}
+                  dataKey={'receipt'}
+                  stroke={violet['500']}
+                />
+                <Line
+                  type="linear"
+                  strokeWidth={2}
+                  dataKey={'receipt'}
+                  stroke={violet['500']}
+                />
+
+                <Tooltip wrapperClassName="!bg-accent border-0" />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="flex h-[240px] w-full items-center justify-center">
+              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            </div>
+          )}
         </CardContent>
       </Card>
     </>
   )
-}
-
-const monthlyData = {
-  labels: [
-    'Jan',
-    'Fev',
-    'Mar',
-    'Abr',
-    'Mai',
-    'Jun',
-    'Jul',
-    'Ago',
-    'Set',
-    'Out',
-    'Nov',
-    'Dez',
-  ],
-  series: [
-    {
-      name: 'Entrada',
-      data: [500, 700, 600, 800, 1000, 1200, 900, 1100, 1300, 1500, 1400, 1600],
-    },
-    {
-      name: 'Saída',
-      data: [
-        -300, -500, -400, -600, -800, -1000, -700, -900, -1100, -1300, -1200,
-        -1400,
-      ],
-    },
-  ],
-}
-
-const options: ApexOptions = {
-  chart: {
-    type: 'line',
-    toolbar: {
-      show: false,
-    },
-    background: 'transparent',
-  },
-  plotOptions: {
-    bar: {
-      horizontal: true,
-    },
-  },
-  xaxis: {
-    categories: monthlyData.labels,
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  colors: ['#34D399', '#EF4444'],
-  theme: {
-    mode: 'dark',
-  },
 }
