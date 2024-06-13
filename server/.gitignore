@@ -1,0 +1,9 @@
+node_modules
+build 
+
+.env
+.env.test
+
+prisma/migrations
+
+coverage
