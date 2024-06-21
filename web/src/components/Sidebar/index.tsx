@@ -4,11 +4,13 @@ import {
   Home,
   List,
   PiggyBank,
-} from 'lucide-react'
+} from "lucide-react";
 
-import { Button } from '../ui/button'
-import { NavLink } from './nav-link'
-import { Profile } from './Profile'
+import { NewTransactionsDialog } from "../new-transactions-dialog";
+import { Button } from "../ui/button";
+import { Dialog, DialogTrigger } from "../ui/dialog";
+import { Profile } from "./Profile";
+import { NavLink } from "./nav-link";
 
 export function Sidebar() {
   return (
@@ -34,13 +36,19 @@ export function Sidebar() {
 
       <div className="mt-auto flex flex-col gap-6">
         <nav className="space-y-0.5">
-          <Button
-            variant="outline"
-            className="flex h-12 w-full gap-2 rounded-lg border-violet-700"
-          >
-            <BadgeDollarSign className="h-6 w-6" />
-            <span className="font-semibold">Nova transação</span>
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="flex h-12 w-full gap-2 rounded-lg border-violet-700"
+              >
+                <BadgeDollarSign className="h-6 w-6" />
+                <span className="font-semibold">Nova transação</span>
+              </Button>
+            </DialogTrigger>
+
+            <NewTransactionsDialog />
+          </Dialog>
         </nav>
 
         <div className="h-px bg-muted-foreground" />
@@ -48,5 +56,5 @@ export function Sidebar() {
         <Profile />
       </div>
     </aside>
-  )
+  );
 }

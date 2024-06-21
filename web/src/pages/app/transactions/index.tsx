@@ -21,6 +21,7 @@ export function Transactions() {
 
         <div className="space-y-2.5">
           <TransactionsTableFilters />
+          {/* <NewTransactionsDialog /> */}
 
           <div className="rounded-md border">
             <Table>

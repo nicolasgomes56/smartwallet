@@ -6,3 +6,74 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  name         String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Transactions Transactions[]
+  Account      Account[]
+}
+
+model Transactions {
+  id               String   @id @default(cuid())
+  name             String
+  amount           Float
+  category         Category @default(Outros)
+  type             Type     @default(Receita)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  userId           String
+  user             User     @relation(fields: [userId], references: [id])
+  Account          Account? @relation(fields: [accountId], references: [id])
+  accountId        String?
+  installmentCount Int?
+}
+
+model Account {
+  id           String         @id @default(cuid())
+  name         String
+  balance      Float
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  userId       String
+  user         User           @relation(fields: [userId], references: [id])
+  Transactions Transactions[]
+  Invoice      Invoice[]
+}
+
+model Invoice {
+  id        String        @id @default(cuid())
+  amount    Float
+  dueDate   DateTime
+  status    InvoiceStatus @default(ABERTO)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  accountId String
+  account   Account       @relation(fields: [accountId], references: [id])
+
+  @@map("invoices")
+}
+
+enum InvoiceStatus {
+  ABERTO
+  PAGO
+  ATRASADO
+}
+
+enum Category {
+  Alimentacao
+  Transporte
+  Lazer
+  Saude
+  Educacao
+  Mercado
+  Outros
+}
+
+enum Type {
+  Receita
+  Despesas
+}
