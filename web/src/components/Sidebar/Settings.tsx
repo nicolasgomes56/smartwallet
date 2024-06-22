@@ -26,7 +26,7 @@ export function Settings() {
           className="gap-2 text-rose-400"
           onClick={() => console.log('teste')}
         >
-          <LogOut className="h-4 w-4 " />
+          <LogOut className="h-4 w-4" />
           <span>Sair</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

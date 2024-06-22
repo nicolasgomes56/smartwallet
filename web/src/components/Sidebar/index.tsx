@@ -1,36 +1,33 @@
 import {
-  BadgeDollarSign,
-  CandlestickChart,
-  Home,
-  List,
-  PiggyBank,
-} from "lucide-react";
+  ShoppingBag
+} from 'lucide-react'
 
-import { NewTransactionsDialog } from "../new-transactions-dialog";
-import { Button } from "../ui/button";
-import { Dialog, DialogTrigger } from "../ui/dialog";
-import { Profile } from "./Profile";
-import { NavLink } from "./nav-link";
+import { CurrencyCircleDollar, HandCoins, House, Money } from '@phosphor-icons/react'
+import { NewTransactionsDialog } from '../new-transactions-dialog'
+import { Button } from '../ui/button'
+import { Dialog, DialogTrigger } from '../ui/dialog'
+import { Profile } from './Profile'
+import { NavLink } from './nav-link'
 
 export function Sidebar() {
   return (
     <aside className="flex flex-col gap-6 border-r border-muted-foreground/10 px-5 py-8">
-      <div className="flex gap-4 ">
-        <PiggyBank className="h-8 w-8" />
+      <div className="flex gap-4">
+        <Money className="h-8 w-8" />
         <span className="flex items-center text-xl font-bold">SmartWallet</span>
       </div>
       <nav className="space-y-2">
         <NavLink to="/">
-          <Home className="h-6 w-6" />
-          <span className="font-bold ">Início</span>
+          <House className="h-6 w-6" />
+          <span className="font-bold">Início</span>
         </NavLink>
         <NavLink to="/transactions">
-          <CandlestickChart className="h-6 w-6" />
+          <CurrencyCircleDollar className="h-6 w-6" />
           Transações
         </NavLink>
-        <NavLink to="/categories">
-          <List className="h-6 w-6" />
-          Categorias
+        <NavLink to="/products">
+          <ShoppingBag className="h-6 w-6" />
+          Produtos
         </NavLink>
       </nav>
 
@@ -42,7 +39,7 @@ export function Sidebar() {
                 variant="outline"
                 className="flex h-12 w-full gap-2 rounded-lg border-violet-700"
               >
-                <BadgeDollarSign className="h-6 w-6" />
+                <HandCoins className="h-6 w-6" />
                 <span className="font-semibold">Nova transação</span>
               </Button>
             </DialogTrigger>
@@ -56,5 +53,5 @@ export function Sidebar() {
         <Profile />
       </div>
     </aside>
-  );
+  )
 }

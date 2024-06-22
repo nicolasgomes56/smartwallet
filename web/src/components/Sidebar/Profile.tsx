@@ -1,4 +1,4 @@
-import { CircleUserRound } from 'lucide-react'
+import { User } from '@phosphor-icons/react'
 
 import { Settings } from './Settings'
 
@@ -10,7 +10,7 @@ export function Profile() {
         className="h-10 w-10 rounded-full"
         alt=""
       /> */}
-      <CircleUserRound className="h-10 w-10 text-muted-foreground" />
+      <User className="h-8 w-8 text-muted-foreground" />
       <div className="flex flex-1 flex-col truncate">
         <span className="text-sm font-semibold text-foreground">
           Nicolas Gomes

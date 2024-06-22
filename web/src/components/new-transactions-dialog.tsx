@@ -1,14 +1,4 @@
-import bbLogo from "@/assets/images/bb.png";
-import itauLogo from "@/assets/images/itau.png";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
+import { format } from 'date-fns'
 import {
   Calendar as CalendarIcon,
   CarFront,
@@ -17,16 +7,28 @@ import {
   Popcorn,
   ShoppingCart,
   Utensils,
-} from "lucide-react";
-import { useState } from "react";
+} from 'lucide-react'
+import { useState } from 'react'
+
+import bbLogo from '@/assets/images/bb.png'
+import itauLogo from '@/assets/images/itau.png'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
+
 import {
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "./ui/dialog";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+} from './ui/dialog'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
 import {
   Select,
   SelectContent,
@@ -34,11 +36,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Toggle } from "./ui/toggle";
+} from './ui/select'
+import { Toggle } from './ui/toggle'
 
 export function NewTransactionsDialog() {
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = useState<Date>()
 
   return (
     <DialogContent>
@@ -182,15 +184,15 @@ export function NewTransactionsDialog() {
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
-                    variant={"outline"}
+                    variant={'outline'}
                     className={cn(
-                      "w-full justify-center text-center font-normal",
-                      !date && "text-muted-foreground",
+                      'w-full justify-center text-center font-normal',
+                      !date && 'text-muted-foreground',
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {date ? (
-                      format(date, "dd/MM/yyyy")
+                      format(date, 'dd/MM/yyyy')
                     ) : (
                       <span>Selecione uma data</span>
                     )}
@@ -210,5 +212,5 @@ export function NewTransactionsDialog() {
         </div>
       </form>
     </DialogContent>
-  );
+  )
 }

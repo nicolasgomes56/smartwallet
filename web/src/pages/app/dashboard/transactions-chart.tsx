@@ -41,7 +41,7 @@ export function TransactionsChart() {
       <Card className="col-span-6">
         <CardHeader className="pb-8">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-base font-medium ">Transações</CardTitle>
+            <CardTitle className="text-base font-medium">Transações</CardTitle>
             <LineChartIcon className="h-4 w-4 text-muted-foreground" />
           </div>
         </CardHeader>

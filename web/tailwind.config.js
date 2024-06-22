@@ -17,6 +17,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        robot: ['Roboto', 'sans-serif'],
+      },
       gridTemplateColumns: {
         app: 'minmax(16rem, 16rem) 1fr',
         profile: 'max-content 1fr min-content',
